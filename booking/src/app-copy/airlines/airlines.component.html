@@ -1,0 +1,42 @@
+<nav class="col-md-2 col-sm-2 col-xs-12 airlines-all-list">
+  <ul>
+    <li *ngFor="let airline of airlines"
+        [class.active]="airline === selectedAirline"
+        (click)="onSelect(airline)">
+      {{airline.name}}
+    </li>
+  </ul>
+</nav>
+<section *ngIf="selectedAirline" class="col-md-10 col-sm-10 col-xs-12 airlines-info">
+  <header>{{selectedAirline.name}}</header>
+  <div id="description" class="airlines-description">
+    <h3>Description</h3>
+    <hr/>
+    <p>
+      {{selectedAirline.description}}
+    </p>
+  </div>
+  <div id="gallery" class="row airlines-gallery">
+    <h3>Gallery</h3>
+    <hr/>
+    <div class="row airlines-gallery-div">
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/1.jpg"/></div>
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/2.jpg"/></div>
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/3.jpg"/></div>
+    </div>
+    <div class="row airlines-gallery-div">
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/4.jpg"/></div>
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/5.jpg"/></div>
+      <div class="col-md-4 col-sm-6 airlines-gallery-img"><img src="assets/images/{{selectedAirline.name.toLowerCase()}}/6.jpg"/></div>
+    </div>
+  </div>
+  <div id="contacts" class="row airlines-contacts">
+    <h3>Contacts</h3>
+    <hr/>
+    <div class="col-md-12 col-sm-12 col-xs-12 airlines-contacts-city">
+      <p>{{selectedAirline.location}}</p>
+      <p>{{selectedAirline.phone}}</p>
+      <div id="map"></div>
+    </div>
+  </div>
+</section>

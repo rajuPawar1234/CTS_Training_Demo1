@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommomserviceService } from './commomservice.service';
 
 @Component({
   selector: 'app-root',

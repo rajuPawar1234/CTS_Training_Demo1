@@ -1,0 +1,131 @@
+<app-adminheader></app-adminheader>
+<div class="container">
+  <div style="border: 1px solid black; padding: 20px 20px; border-radius: 10px;color: aliceblue;">
+    <div class="row">
+      <div class="col-8">
+        <h4>Manage Discount</h4>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-2">
+        <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#exampleModal">
+          Add New
+        </button>
+    </div>
+    </div>
+     <div class="row table-responsive">
+        <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Discount Code</th>
+                    <th scope="col">Discount Name</th>
+                    <th scope="col">Percentage</th>
+                    <th scope="col">Discount Amount</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let d of discount">
+                    <th>{{d.id}}</th>
+                    <td>{{d.discountCode}}</td>
+                    <td>{{d.discountName}}</td>
+                    <td>{{d.discountPercentage}}</td>
+                    <td>{{d.discountAmount}}</td>
+                      <td><button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal1">
+                        Update
+                      </button>
+                    </td>
+                    <td><button class="btn btn-danger" (click)="deleteDiscount(d.id)">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div> 
+  </div>
+</div>
+
+<!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Discount</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="border: 1px solid black; padding: 10px 10px; border-radius: 10px;">
+          <form>
+            <div class="form-group">
+              <label>Enter Discount Name</label>
+             <input type="text" class="form-control form-control-sm" [(ngModel)]= "discountName" name="discountName" placeholder="Discount Name">
+           </div>
+
+           <div class="form-group">
+            <label>Enter Discount Code</label>
+            <input type="text" class="form-control form-control-sm" [(ngModel)]= "discountCode" name="discountCode" placeholder="Discount Code">
+          </div>
+               
+               <div class="form-group">
+                 <label>Enter Percentage</label> 
+                <input type="number" class="form-control form-control-sm" name="discountPercentage" [(ngModel)]= "discountPercentage" placeholder="Discount Percentage">
+              </div>
+               <div class="form-group">
+                 <label>Enter Discount Amount</label> 
+                 <input type="number" class="form-control form-control-sm" name="discountAmount" [(ngModel)]= "discountAmount" placeholder="Discount Amount">
+               </div>
+           </form> 
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addDiscount()">Add Discount</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Flight</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="border: 1px solid black; padding: 10px 10px; border-radius: 10px;">
+          <form>
+             <div class="form-group">
+                  <label>Enter Airline Name</label>
+                 <input type="text" class="form-control form-control-sm" [(ngModel)]= "airlinename" name="airlinename" placeholder="Enter Name">
+               </div>
+               <div class="form-group">
+                 <label>Upload Airline Logo</label> 
+                <input type="file" class="form-control form-control-sm" name="logo">
+              </div>
+               <div class="form-group">
+                 <label>Enter Contact Number</label> 
+                <input type="number" class="form-control form-control-sm" name="airlinecontact" [(ngModel)]= "airlinecontact" placeholder="Enter Mobile">
+              </div>
+               <div class="form-group">
+                 <label>Enter Contact Address</label> 
+                 <input type="email" class="form-control form-control-sm" name="airlineaddress" [(ngModel)]= "airlineaddress" placeholder="Enter Email">
+               </div>
+           </form> 
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addNewFlight()">Update Flight</button>
+      </div>
+    </div>
+  </div>
+</div>
+         -->

@@ -1,0 +1,14 @@
+<nav id="main-navbar" class="main-navbar">
+  <ul>
+      <li>
+      	<a [routerLink]="['/']">MS&CO</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      	<a [routerLink]="['/']">AIRFLIGHTS</a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+      	<a [routerLink]="['/airlines']">AIRCOMPANIES</a>
+      </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
