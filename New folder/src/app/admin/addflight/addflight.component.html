@@ -1,0 +1,31 @@
+<app-adminheader></app-adminheader>
+
+<div class="container">
+    <div class="row">
+      <div class="col-4">
+        <h4 class="text-white">Add New Flight Airline</h4>
+        <div style="border: 1px solid black; padding: 20px 20px; border-radius: 10px;color: aliceblue;">
+         <form>
+            <div class="form-group">
+                 <label>Enter Airline Name</label>
+                <input type="text" class="form-control form-control-sm" [(ngModel)]= "airlinename" name="airlinename" placeholder="Enter Name">
+              </div>
+              <div class="form-group">
+                <label>Upload Airline Logo</label> 
+               <input type="file" class="form-control form-control-sm" name="logo">
+             </div>
+              <div class="form-group">
+                <label>Enter Contact Number</label> 
+               <input type="number" class="form-control form-control-sm" name="airlinecontact" [(ngModel)]= "airlinecontact" placeholder="Enter Mobile">
+             </div>
+              <div class="form-group">
+                <label>Enter Contact Address</label> 
+                <input type="email" class="form-control form-control-sm" name="airlineaddress" [(ngModel)]= "airlineaddress" placeholder="Enter Email">
+              </div>
+            <button type="button" class="btn btn-primary" (click)="addNewFlight()">Add Flight / Airline</button>
+          </form> 
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+</div>
