@@ -1,0 +1,142 @@
+<app-userheader></app-userheader>
+<!-- <app-welcome></app-welcome> -->
+
+
+<div class="container pt-5">
+  <div style="border: 1px solid black; padding: 20px 20px; border-radius: 10px;color: aliceblue;">
+    <form>
+    <div class="row p-1">
+        <div class="col-2">
+          <input type="radio" [(ngModel)]= "trip" name="trip" value="oneWay"> One way  
+        </div>
+        <div class="col-2">
+          <input type="radio" [(ngModel)]= "trip" name="trip" value="roundTrip"> Rount Trip  
+        </div>
+      </div>
+      <div class="row p-1">
+        <div class="col-2">
+          From
+          <select [(ngModel)]= "fromplace" name="fromplace" class="form-control form-control-sm">
+            <option value="">-- Select From --</option>
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="pune">Pune</option>
+            <option value="bengluru">Bengluru</option>
+          </select>  
+        </div>
+        <div class="col-2">
+          To
+          <select [(ngModel)]= "toplace" name="toplace" class="form-control form-control-sm">
+            <option value="">-- Select To --</option>
+            <option value="delhi">Delhi</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="pune">Pune</option>
+            <option value="bengluru">Bengluru</option>
+          </select>  
+      </div>
+      <!-- </div>
+      <div class="row p-1"> -->
+        <div class="col-2">
+          Onword Journey
+          <input type="date" [(ngModel)]= "onworddate" name="onworddate" class="form-control form-control-sm"> 
+        </div>
+        <div class="col-2">
+          Return Journey
+          <input type="date" [(ngModel)]= "returndate" name="returndate" class="form-control form-control-sm"> 
+        </div>
+         <div class="col-2 pt-4">
+          <input type="submit" (click)="search()" value="Search" class="btn btn-success"> 
+        </div> 
+      </div>
+
+      <!-- Table Here  -->
+      <div class="row table-responsive">
+        <div class="col-8">
+            <table class="table table-hover table-sm" style="border: none;">
+                <thead style="border: none;">
+                  <tr style="border: none;">
+                    <th scope="col">Select</th>
+                    <!-- <th scope="col">ID</th> -->
+                    <th scope="col">Airline Name</th>
+                    <th scope="col">Flight Number</th>
+                    <!-- <th scope="col">From</th> -->
+                    <!-- <th scope="col">To</th> -->
+                    <th scope="col">Departure Tome</th>
+                    <th scope="col">Seats</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let f of airlineSchedule">
+                    <!-- <th>{{f.id}}</th> -->
+                    <td><input type="radio" (click)="continue()" name="sss" [(ngModel)]= "sss" value="{{f.id}}"></td>
+                    <td>{{f.airlinename}}</td>
+                    <td>{{f.airlinenumber}}</td>
+                    <!-- <td>{{f.fromplace}}</td> -->
+                    <!-- <td>{{f.toplace}}</td> -->
+                    <td>{{f.departuretime}}</td>
+                    <td>{{f.seats}}</td>
+                    <td>{{f.price}}</td>
+                     </tr>
+                </tbody>
+              </table>
+        </div>
+    </div> 
+
+      <!-- <div class="row"><hr></div> -->
+      <!-- <div class="row p-1 pt-3">
+        <div class="col-4">
+          Enter Name : 
+          <input type="text"  [(ngModel)]= "name" class="form-control form-control-sm" placeholder="Enter Name" name="name">
+        </div>
+        <div class="col-4">
+          Enter Contact : 
+          <input type="number" [(ngModel)]= "mobile" class="form-control form-control-sm" placeholder="Enter contact" name="contact">
+        </div>
+      </div> -->
+      <!-- <div class="row p-1">
+        <div class="col-4">
+          Enter Email Id : <i class="text-danger">(it as a user name)</i>
+          <input type="email" [(ngModel)]= "email" class="form-control form-control-sm" placeholder="Enter Email" name="email">
+        </div>
+        <div class="col-4">
+          Enter Password : 
+          <input type="password" [(ngModel)]= "password" class="form-control form-control-sm" placeholder="Enter Password" name="password">
+        </div>
+      </div> -->
+      <div class="row pt-2">
+        <!-- <div class="col-4">
+          <input type="button" (click)="saveBooking()" value="Book It Now" class="btn btn-success"> 
+        </div> -->
+        <div *ngIf="!isShowDiv1" class="col-4">
+          <input type="button" (click)=toggleDisplayDiv() value="Continue..." class="btn btn-success"> 
+        </div>
+      <!-- <button (click)="Clicked()">click here </button> -->
+      </div>
+      <div [hidden]="!isShowDiv">
+        hi
+
+      </div>
+    </form>
+    </div>
+  </div>
+  <hr>
+  
+ 
+  <!-- <input  type="text" [disabled]='toggleButton' value="Sample text box"> 
+
+<button (click)="enable()" type="button">Enable</button>
+<button (click)="disable()" type="button">Disable</button> 
+
+
+public toggleButton: boolean = false;
+
+  enable(){
+    this.toggleButton = false
+ }
+
+ disable(){
+    this.toggleButton = true
+ }
+-->
+
