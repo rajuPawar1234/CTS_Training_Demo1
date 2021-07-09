@@ -1,0 +1,49 @@
+<app-userheader></app-userheader>
+
+<div class="container">
+    <div style="border: 1px solid black; padding: 20px 20px; border-radius: 10px;color: aliceblue;">
+      <div class="row">
+          <div class="col-4">
+              <h4>Manage Booking </h4>
+          </div>
+      </div>
+      <div class="row table-responsive">
+          <div class="col">
+              <table class="table table-hover table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Contact</th>
+                      <th scope="col">Persons</th>
+                      <th scope="col">Trip</th>
+                      <th scope="col">From Place</th>
+                      <th scope="col">To Place</th>
+                      <th scope="col">Onword Date</th>
+                      <th scope="col">Return Date</th>
+                      <th scope="col">Download</th>
+                      <!-- <th scope="col">Update</th> -->
+                      <th scope="col">Cancel</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let b of allBooking">
+                      <th>{{b.id}}</th>
+                      <td>{{b.name}}</td>
+                      <th>{{b.mobile}}</th>
+                      <td>{{b.persons}}</td>
+                      <td>{{b.trip}}</td>
+                      <td>{{b.fromplace}}</td>
+                      <th>{{b.toplace}}</th>
+                      <td>{{b.onworddate}}</td>
+                      <td>{{b.returndate}}</td>
+                      <td><button class="btn btn-primary">Download</button></td>
+                      <!-- <td><button class="btn btn-success">Update</button></td> -->
+                      <td><button (click)="cancelBooking(b.id)" class="btn btn-danger">Cancel</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+      </div>
+    </div>
+  </div>
