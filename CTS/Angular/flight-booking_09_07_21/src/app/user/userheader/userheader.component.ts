@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthgaurdService } from 'src/app/auth/authgaurd.service';
-import { UserService } from '../user.service';
+import { UserauthenticationService } from '../service/userauthentication.service';
 
 @Component({
   selector: 'app-userheader',
@@ -9,12 +8,12 @@ import { UserService } from '../user.service';
 })
 export class UserheaderComponent implements OnInit {
 
-  constructor(private userServive : AuthgaurdService) { }
+  constructor(private userAuthService : UserauthenticationService) { }
 
   ngOnInit(): void {
   }
 
   logout(){
-    this.userServive.logout();
+    this.userAuthService.logOut();
   }
 }
