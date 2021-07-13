@@ -1,0 +1,207 @@
+<app-adminheader></app-adminheader>
+<div class="container">
+  <div style="background-color: rgb(59, 58, 58); border: 1px solid black; padding: 20px 20px; border-radius: 10px;color: aliceblue;">
+    <div class="row">
+      <div class="col-8">
+        <h4>Manage Schedule</h4>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-2">
+        <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#exampleModal">
+          Add New
+        </button>
+    </div>
+    </div>
+     <div class="row table-responsive">
+        <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Flight Number</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Departure Tome</th>
+                    <th scope="col">Seats</th>
+                    <th scope="col">Price</th>
+
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let f of airlineSchedule">
+                    <th>{{f.id}}</th>
+                    <td>{{f.airlinename}}</td>
+                    <td>{{f.airlinenumber}}</td>
+                    <td>{{f.fromplace}}</td>
+                    <td>{{f.toplace}}</td>
+                    <td>{{f.departuretime}}</td>
+                    <td>{{f.seats}}</td>
+                    <td>{{f.price}}</td>
+                    <td><button type="button" data-toggle="modal" data-target="#updateModal"
+                       class="btn btn-success" (click)="forUpdateSchedule(
+                        f.id,f.airlinename,f.airlinenumber,f.fromplace,f.toplace,
+                        f.departuretime,f.seats,f.price)">
+                        Update
+                      </button>
+                    </td>
+                    <td><button class="btn btn-danger" (click)="deleteSchedule(f.id)">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div> 
+  </div>
+</div>
+
+
+<div class="modal model-md fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Flight Schedule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      <div class="modal-body">
+        <div style="border: 1px solid black; padding: 10px 10px; border-radius: 10px;">
+         
+            <div class="row p-1">
+              <div class="col-12">
+                Select Airline <!--[(ngModel)]= "airline" -->
+                 <select  name="airlinename" [(ngModel)]="airlinename" class="form-control form-control-sm">
+                   <option value="">-- Select Airline --</option>
+                   <option *ngFor="let f of flights" value="{{f.airlinename}}">{{f.airlinename}}</option>
+                 </select>  
+              </div>
+              <div class="col-12">
+                Flight Number <!--[(ngModel)]= "airline" -->
+                 <input type="text" [(ngModel)]="airlinenumber" name="airlinenumber" placeholder="Flight Number" class="form-control form-control-sm">  
+           </div>    
+          </div> 
+          <div class="row p-1">
+            <div class="col-6">
+              Location From : 
+              <select name="fromplace" [(ngModel)]="fromplace" class="form-control form-control-sm">
+                <option value="">-- Select From --</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
+                <option value="bengluru">Bengluru</option>
+              </select>   
+            </div>
+            <div class="col-6">
+              Location To : 
+              <select name="toplace" [(ngModel)]="toplace" class="form-control form-control-sm">
+                <option value="">-- Select To --</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
+                <option value="bengluru">Bengluru</option>
+              </select>  
+         </div>    
+        </div>
+        <div class="row p-1">
+          <div class="col-6">
+            No of Seats
+            <input type="number" [(ngModel)]="seats" name="seats" placeholder="No of Seats" class="form-control form-control-sm">
+          </div>
+          <div class="col-6">
+            Price
+            <input type="number" [(ngModel)]="price" name="price" placeholder="Enter Price" class="form-control form-control-sm">
+          </div>
+          <div class="col-12">
+            Departure Time
+            <input type="datetime-local" [(ngModel)]="departuretime" name="departuretime" class="form-control form-control-sm">
+          </div>
+          
+        </div>
+        
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addFlightSchedule()">Add Flight Schedule</button>
+      </div>
+    </form> 
+    </div>
+  </div>
+</div>
+
+<!-- updateModal -->
+
+<div class="modal model-md fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Flight Schedule</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      <div class="modal-body">
+        <div style="border: 1px solid black; padding: 10px 10px; border-radius: 10px;">
+         
+            <div class="row p-1">
+              <div class="col-12">
+                Select Airline <!--[(ngModel)]= "airline" -->
+                 <input type="text" readonly name="airlinename" [(ngModel)]="anm" class="form-control form-control-sm">
+              </div>
+              <div class="col-12">
+                Flight Number <!--[(ngModel)]= "airline" -->
+                 <input type="text" readonly [(ngModel)]="ano" name="airlinenumber" class="form-control form-control-sm">  
+           </div>    
+          </div> 
+          <div class="row p-1">
+            <div class="col-12">
+              Location From : 
+              <select name="fromplace" [(ngModel)]="fp" class="form-control form-control-sm">
+                <option value="">-- Select From --</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
+                <option value="bengluru">Bengluru</option>
+              </select>   
+            </div>
+            <div class="col-12">
+              Location To : 
+              <select name="toplace" [(ngModel)]="tp" class="form-control form-control-sm">
+                <option value="">-- Select To --</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
+                <option value="bengluru">Bengluru</option>
+              </select>  
+         </div>    
+        </div>
+        <div class="row p-1">
+          <div class="col-6">
+            No of Seats
+            <input type="number" [(ngModel)]="s" name="seats" placeholder="No of Seats" class="form-control form-control-sm">
+          </div>
+          <div class="col-6">
+            Price
+            <input type="number" [(ngModel)]="p" name="price" placeholder="Enter Price" class="form-control form-control-sm">
+          </div>
+          <div class="col-12">
+            Departure Time
+            <input type="datetime-local" [(ngModel)]="dt" name="departuretime" class="form-control form-control-sm">
+          </div>
+          
+        </div>
+        
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateSchedule()">Update Flight Schedule</button>
+      </div>
+    </form> 
+    </div>
+  </div>
+</div>
