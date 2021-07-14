@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: com.demo.FlightBookingDemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 140.669 s <<< FAILURE! - in com.demo.FlightBookingDemoApplicationTests
+shouldGetAllDiscount  Time elapsed: 1.455 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <4>
+	at com.demo.FlightBookingDemoApplicationTests.shouldGetAllDiscount(FlightBookingDemoApplicationTests.java:53)
+
+checkDiscountById  Time elapsed: 0.314 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnfinishedStubbingException: 
+
+Unfinished stubbing detected here:
+-> at com.demo.FlightBookingDemoApplicationTests.checkDiscountById(FlightBookingDemoApplicationTests.java:88)
+
+E.g. thenReturn() may be missing.
+Examples of correct stubbing:
+    when(mock.isOk()).thenReturn(true);
+    when(mock.isOk()).thenThrow(exception);
+    doThrow(exception).when(mock).someVoidMethod();
+Hints:
+ 1. missing thenReturn()
+ 2. you are trying to stub a final method, which is not supported
+ 3. you are stubbing the behaviour of another mock inside before 'thenReturn' instruction is completed
+
+

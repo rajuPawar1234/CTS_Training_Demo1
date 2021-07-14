@@ -1,0 +1,13 @@
+#server:
+#  port: 8081
+#spring:
+#  kafka:
+#    cunsumer:
+#      bootstarp-servers: localhost:9092
+#      group-id: "my_group_id"
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
